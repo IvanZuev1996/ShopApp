@@ -108,3 +108,83 @@ export const links = [
         link: "Terms",
     }
 ]
+
+export const productsList = [
+    {
+        id: 1,
+        title: 'Old Skool',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/5d6/240_360_1/5d603ff8b4dde96db61b3f6cc7b75822.jpg",
+    },
+    {
+        id: 2,
+        title: 'Ozweego',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/56e/240_360_1/56ef918baa7e7a04bbb0a1f4a84e277f.jpg",
+    },
+    {
+        id: 3,
+        title: '574',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/852/240_360_1/85238643f73960f691cded39148cfa39.jpg",
+    },
+    {
+        id: 4,
+        title: 'Forum',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/102/240_360_1/1021271d0db230abe35941921fa3909a.jpg",
+    },
+    {
+        id: 5,
+        title: 'Get Lite III',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/f4b/240_360_1/f4b14c4e1baf8f4eb017e04af69b544e.jpg",
+    },
+    {
+        id: 6,
+        title: 'Ozelia',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/23b/240_360_1/23be4e05ee7d0686938b3c3c55fbd25c.jpg",
+    },
+    {
+        id: 7,
+        title: 'Classic Leather',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/304/240_360_1/304d70065dad98b051eebacb6e693043.jpg",
+    },
+    {
+        id: 8,
+        title: 'Old Skool',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/5d6/240_360_1/5d603ff8b4dde96db61b3f6cc7b75822.jpg",
+    },
+    {
+        id: 9,
+        title: 'Ozweego',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/56e/240_360_1/56ef918baa7e7a04bbb0a1f4a84e277f.jpg",
+    },
+    {
+        id: 10,
+        title: '574',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/852/240_360_1/85238643f73960f691cded39148cfa39.jpg",
+    },
+    {
+        id: 11,
+        title: 'Forum',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/102/240_360_1/1021271d0db230abe35941921fa3909a.jpg",
+    },
+    {
+        id: 12,
+        title: 'Get Lite III',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/f4b/240_360_1/f4b14c4e1baf8f4eb017e04af69b544e.jpg",
+    },
+    {
+        id: 13,
+        title: 'Ozelia',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/23b/240_360_1/23be4e05ee7d0686938b3c3c55fbd25c.jpg",
+    },
+    {
+        id: 14,
+        title: 'Classic Leather',
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/304/240_360_1/304d70065dad98b051eebacb6e693043.jpg",
+    },
+]
+
+export const selectItems = [
+    'Adidas',
+    'Nike',
+    'Reebok',
+    'Gucci',
+]
