@@ -127,7 +127,7 @@
         margin-bottom: 20px;
     }
     .slide{
-        height: 50vh;
+        height: 370px;
         flex-direction: column;
         justify-content: center;
     }
@@ -174,7 +174,7 @@
         margin-top: 20px;
     }
     .slide{
-        height: 60vh;
+        height: 600px;
         flex-direction: column;
         justify-content: center;
         margin-bottom: 70px;
