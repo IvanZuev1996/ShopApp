@@ -1,3 +1,4 @@
+import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProdactList from './pages/ProdactList';
@@ -7,7 +8,7 @@ import './styles/App.css';
 
 function App() {
   return (
-    <Login/>
+    <Home/>
   );
 }
 

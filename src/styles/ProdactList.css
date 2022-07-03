@@ -32,3 +32,7 @@
     border: none;
     border-radius: none;
 }
+
+@media screen and (max-width: 380px){
+    
+}

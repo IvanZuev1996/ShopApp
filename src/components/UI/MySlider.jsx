@@ -18,7 +18,8 @@ const MySlider = () => {
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             slidesPerView={(width >= 1400) ? 5 : 
                         (width >= 1100) ? 4 :
-                        (width >= 860 ? 3 : 2)
+                        (width >= 992) ? 3 :
+                        (width >= 400) ? 2 : 1
                         }
             navigation
             grabCursor = {true}

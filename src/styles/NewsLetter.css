@@ -42,3 +42,29 @@
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+@media screen and (min-width: 0px) and (max-width: 767px){
+    .news-container{
+        height: 50vh;
+    }
+    .news-title{
+        font-size: 24px;
+    }
+    .news-desc{
+        font-size: 14px;
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .news-container{
+        height: 35vh;
+    }
+    .news-title{
+        font-size: 35px;
+    }
+    .news-desc{
+        font-size: 24px;
+        width: 500px;
+    }
+}

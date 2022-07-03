@@ -41,7 +41,7 @@ const Product = () => {
             <div className="product-image-wrapper">
                 <img 
                     src="https://static.street-beat.ru/upload/iblock/9d9/9d9ab554055b93912bc33d68bccf2190.jpg"
-                    className='product-image'
+                    className='product-image-on-page'
                 />
             </div>
             <div className="product-info-wrapper">

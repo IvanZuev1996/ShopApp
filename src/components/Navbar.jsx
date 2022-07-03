@@ -18,6 +18,7 @@ const Navbar = () => {
             </div>
             <div className="center-navbar-content">
                 <h1 className='navbar-logo'>GET. YOUR. SNEAKERS</h1>
+                <h1 className='navbar-logo-mobile'>GET.</h1>
             </div>
             <div className="right-navbar-content">
                 <div className="navbar-menu-item">REGISTER</div>

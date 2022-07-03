@@ -6,7 +6,7 @@ import ProductItem from './ProductItem'
 
 const Products = ({page}) => {
   return (
-    <div>
+    <div className='prosuct-list-container'>
         {page === 'HomePage'
           ? <h2 className='main-products-title'>MOST OF ALL BUY!</h2>
           : <div></div>

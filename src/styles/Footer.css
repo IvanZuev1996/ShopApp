@@ -74,3 +74,19 @@
 .contact-icon{
     margin-right: 10px;
 }
+
+@media screen and (min-width: 0px) and (max-width: 767px){
+    .footer-container{
+        padding: 10px;
+        flex-direction: column;
+    }
+    .footer-right{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .footer-left{
+        display: none;
+    }
+}
