@@ -250,3 +250,18 @@ export const selectSortItems = [
         title: 'Price (desc)',
     },
 ]
+
+export const colors = [
+    {
+        id: 1,
+        title: 'Black',
+    },
+    {
+        id: 2,
+        title: 'Pink',
+    },
+    {
+        id: 3,
+        title: 'Grey',
+    },
+]
