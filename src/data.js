@@ -182,9 +182,71 @@ export const productsList = [
     },
 ]
 
-export const selectItems = [
-    'Adidas',
-    'Nike',
-    'Reebok',
-    'Gucci',
+export const selectCompanyItems = [
+    {
+        id: 1,
+        title: 'Adidas',
+    },
+    {
+        id: 2,
+        title: 'Nike',
+    },
+    {
+        id: 3,
+        title: 'Puma',
+    },
+    {
+        id: 4,
+        title: 'Reebok',
+    },
+    {
+        id: 5,
+        title: 'Gucci',
+    },
+]
+
+export const selectSizeItems = [
+    {
+        id: 1,
+        title: '37',
+    },
+    {
+        id: 2,
+        title: '38',
+    },
+    {
+        id: 3,
+        title: '39',
+    },
+    {
+        id: 4,
+        title: '40',
+    },
+    {
+        id: 5,
+        title: '41',
+    },
+    {
+        id: 6,
+        title: '42',
+    },
+    {
+        id: 7,
+        title: '43',
+    },
+]
+
+export const selectSortItems = [
+    {
+        id: 1,
+        title: 'Newest',
+    },
+    {
+        id: 2,
+        title: 'Price (asc)',
+    },
+    {
+        id: 3,
+        title: 'Price (desc)',
+    },
 ]

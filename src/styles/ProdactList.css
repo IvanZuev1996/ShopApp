@@ -1,10 +1,11 @@
+
 .filter-container{
     display: flex;
     justify-content: space-between;
 }
 
 .filter{
-    margin: 20px;
+    margin: 20px 50px;
     display: flex;
     align-items: center;
 }
@@ -15,21 +16,19 @@
 }
 
 .prodact-list-title{
-    margin: 20px;
+    margin: 20px 50px;
 }
 
-.filter-select{
+.filter-select-company{
     margin-left: 15px;
-    outline: none;
-    width: 250px;
-    height: 30px;
+    padding: 8px 15px;
     border: none;
+    border-radius: none;
 }
 
-.filter-option{
-    outline: none;
+.filter-select-size{
+    margin-left: 15px;
+    padding: 8px;
     border: none;
-    margin-top: 5px;
-    font-size: 20px;
-    padding: 10px;
+    border-radius: none;
 }
