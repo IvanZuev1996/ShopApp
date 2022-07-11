@@ -25,17 +25,17 @@ export const sliderItems = [
 export const categories = [
     {
         id: 1,
-        img: "https://static.street-beat.ru/upload/iblock/914/914215d878fde6f562ede34f549c260b.jpg",
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/acb/500_600_1/acbe85c06128f0379764225ac963ea1c.jpeg",
         title: "FOR MEN",
     },
     {
         id: 2,
-        img: "https://static.street-beat.ru/upload/iblock/a7f/a7f202b5b66c10982b2825b607389ed9.jpg",
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/c88/500_600_1/c888bc850877da12472a5651b1384b03.jpeg",
         title: "FOR WOMEN",
     },
     {
         id: 3,
-        img: "https://static.street-beat.ru/upload/iblock/0fc/0fc3a4aee31a9a4136bfe8e17c9c723a.jpg",
+        img: "https://static.street-beat.ru/upload/resize_cache/iblock/b89/500_600_1/b89c3181e2d5347b1750f6412f43bbd7.jpeg",
         title: "FOR CHILDREN",
     }
 ]

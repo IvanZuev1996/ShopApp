@@ -8,5 +8,6 @@
     .categories-container{
         flex-direction: column;
         padding: 5px;
+        align-items: center;
     }
 }
