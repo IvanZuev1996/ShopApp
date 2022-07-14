@@ -73,3 +73,20 @@
     display: flex;
     justify-content: center;
 }
+
+@media screen and (min-width: 0px) and (max-width: 767px){
+    .resister-wrapper {
+        height: 70%;
+        width: 300px;
+        padding: 25px 15px;
+    }
+    .main-ragister-title{
+        text-align: center;
+    }
+    .regiser-aggreement{
+        font-size: 10px;
+    }
+    .register-container{
+        height: 700px;
+    }
+}
