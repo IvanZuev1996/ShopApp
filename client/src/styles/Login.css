@@ -67,3 +67,13 @@
     font-size: 12px;
     margin: 5px 0px;
 }
+
+
+@media screen and (min-width: 0px) and (max-width: 767px){
+    .login-wrapper{
+        width: 300px;
+    }
+    .login-links a{
+        font-size: 10px;
+    }
+}

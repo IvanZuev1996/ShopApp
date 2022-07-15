@@ -115,6 +115,18 @@
     }
 }
 
+@media screen and (min-width: 0px) and (max-width: 767px){
+    .products-container{
+        padding: 2px 0px;
+    }
+    .product-item-container{
+        margin-bottom: 0px;
+    }
+    .product-image{
+        height: 32vh;
+    }
+}
+
 @media screen and (min-width: 768px) and (max-width: 992px){
     .main-products-title{
         font-size: 24px;

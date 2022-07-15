@@ -111,3 +111,27 @@
 .dicrement{
     cursor: pointer;
 }
+
+@media screen and (min-width: 0px) and (max-width: 767px){
+    .product-content-wrapper{
+        flex-direction: column;
+    }
+    .product-info-wrapper{
+        padding: 0px 8px;
+        width: 100vw;
+    }
+    .product-image-on-page{
+        height: auto;
+    }
+    .product-filter-container{
+        flex-direction: column;
+        width: auto;
+        align-items: flex-start;
+    }
+    .product-filter{
+        margin-bottom: 10px;
+    }
+    .product-add-to-cart{
+        width: auto;
+    }
+}
