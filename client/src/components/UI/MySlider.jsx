@@ -26,8 +26,8 @@ const MySlider = () => {
             pagination={{ clickable: true }}
         >
             {popularProducts.map(item => 
-                <SwiperSlide>
-                    <ProductItem item={item} key={item.id}/>
+                <SwiperSlide key={item.id}>
+                    <ProductItem item={item}/>
                 </SwiperSlide>
             )}
         </Swiper>

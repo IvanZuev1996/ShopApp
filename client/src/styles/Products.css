@@ -22,14 +22,17 @@
     position: relative;
 }
 .product-image{
+    width: 300px;
     height: 100%;
     z-index: 2;
 }
 
 .product-title{
     display: flex;
+    align-items: center;
+    text-align: center;
     justify-content: center;
-    width: 100%;
+    width: 70%;
     margin: auto 0;
     margin-top: 20px;
     user-select: none;
@@ -110,20 +113,11 @@
         padding: 15px 25px;
         margin-top: 10px;
     }
-    .product-image{
-        height: 35vh;
-    }
-}
-
-@media screen and (min-width: 0px) and (max-width: 767px){
     .products-container{
         padding: 2px 0px;
     }
     .product-item-container{
         margin-bottom: 0px;
-    }
-    .product-image{
-        height: 32vh;
     }
 }
 

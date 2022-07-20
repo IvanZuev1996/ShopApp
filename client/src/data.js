@@ -27,16 +27,19 @@ export const categories = [
         id: 1,
         img: "https://static.street-beat.ru/upload/resize_cache/iblock/acb/500_600_1/acbe85c06128f0379764225ac963ea1c.jpeg",
         title: "FOR MEN",
+        category: "man"
     },
     {
         id: 2,
         img: "https://static.street-beat.ru/upload/resize_cache/iblock/c88/500_600_1/c888bc850877da12472a5651b1384b03.jpeg",
         title: "FOR WOMEN",
+        category: "women"
     },
     {
         id: 3,
         img: "https://static.street-beat.ru/upload/resize_cache/iblock/b89/500_600_1/b89c3181e2d5347b1750f6412f43bbd7.jpeg",
         title: "FOR CHILDREN",
+        category: "children"
     }
 ]
 
@@ -185,23 +188,23 @@ export const productsList = [
 export const selectCompanyItems = [
     {
         id: 1,
-        title: 'Adidas',
+        title: 'adidas',
     },
     {
         id: 2,
-        title: 'Nike',
+        title: 'nike',
     },
     {
         id: 3,
-        title: 'Puma',
+        title: 'puma',
     },
     {
         id: 4,
-        title: 'Reebok',
+        title: 'reebok',
     },
     {
         id: 5,
-        title: 'Gucci',
+        title: 'gucci',
     },
 ]
 
@@ -240,14 +243,17 @@ export const selectSortItems = [
     {
         id: 1,
         title: 'Newest',
+        value: 'newest'
     },
     {
         id: 2,
         title: 'Price (asc)',
+        value: 'asc'
     },
     {
         id: 3,
         title: 'Price (desc)',
+        value: 'desc'
     },
 ]
 

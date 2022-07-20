@@ -8,8 +8,23 @@ import Footer from '../components/Footer'
 import { selectCompanyItems } from '../data.js'
 import { selectSizeItems } from '../data.js'
 import { selectSortItems } from '../data.js'
+import { useLocation } from 'react-router-dom'
+import { useState } from 'react'
 
 const ProdactList = () => {
+    const location = useLocation();
+    const category = location.pathname.split('/')[2];
+    const [filters, setFilters] = useState({});
+    const [sort, setSort] = useState('newest');
+
+    const handleFilters = (e) => {
+        const value = e.target.value;
+        setFilters({
+            ...filters,
+            [e.target.name]: value
+        })
+    }
+
   return (
     <div className='prodact-list-container'>
         <Navbar/>
@@ -18,14 +33,14 @@ const ProdactList = () => {
         <div className="filter-container">
             <div className="filter">
                 <div className='filter-text'>Filter Products</div>
-                <select className='filter-select-company'>
-                    <option disabled selected className='filter-option'>Company</option>
+                <select name='categories' className='filter-select-company' onChange={handleFilters}>
+                    <option disabled className='filter-option'>Company</option>
                     {selectCompanyItems.map(item => 
                          <option className='filter-option' key={item.id}>{item.title}</option>
                     )}
                 </select>
-                <select className='filter-select-size'>
-                    <option disabled selected className='filter-option'>Size</option>
+                <select name='size' className='filter-select-size' onChange={handleFilters}>
+                    <option disabled className='filter-option'>Size</option>
                     {selectSizeItems.map(item => 
                          <option className='filter-option' key={item.id}>{item.title}</option>
                     )}
@@ -33,15 +48,15 @@ const ProdactList = () => {
             </div>
             <div className="filter">
                 <div className='filter-text'>Sort Products</div>
-                <select className='filter-select-size'>
+                <select className='filter-select-size' onChange={(e) => setSort(e.target.value)}>
                     <option disabled selected className='filter-option'>Sort</option>
                     {selectSortItems.map(item => 
-                         <option className='filter-option' key={item.id}>{item.title}</option>
+                         <option value={item.value} className='filter-option' key={item.id}>{item.title}</option>
                     )}
                 </select>
             </div>
         </div>
-        <Products page='ProductList'/>
+        <Products page='ProductList' category={category} filters={filters} sort={sort}/>
         <NewsLetter/>
         <Footer/>
     </div>
