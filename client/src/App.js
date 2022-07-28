@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import ProdactList from './pages/ProdactList';
 import Product from './pages/Product';
 import Register from './pages/Register';
+import Success from './pages/Success';
 import './styles/App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ function App() {
         />
         <Route path='/products/:category' element={<ProdactList/>}/>
         <Route path='/product/:id' element={<Product/>}/>
+        <Route path='/success' element={<Success/>}/>
       </Routes>
     </BrowserRouter>
   );

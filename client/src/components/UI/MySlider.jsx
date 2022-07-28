@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-const MySlider = () => {
+const MySlider = ({products}) => {
     const { width } = useWindowDimensions();
     return (
         <Swiper
@@ -25,9 +25,9 @@ const MySlider = () => {
             grabCursor = {true}
             pagination={{ clickable: true }}
         >
-            {popularProducts.map(item => 
-                <SwiperSlide key={item.id}>
-                    <ProductItem item={item}/>
+            {products.map(item => 
+                <SwiperSlide key={item._id}>
+                    <ProductItem item={item} />
                 </SwiperSlide>
             )}
         </Swiper>

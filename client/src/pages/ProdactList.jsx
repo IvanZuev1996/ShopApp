@@ -29,7 +29,7 @@ const ProdactList = () => {
     <div className='prodact-list-container'>
         <Navbar/>
         <Announcement/>
-        <h1 className="prodact-list-title">Sneackers</h1>
+        <h1 className="prodact-list-title">{category}</h1>
         <div className="filter-container">
             <div className="filter">
                 <div className='filter-text'>Filter Products</div>
@@ -49,7 +49,6 @@ const ProdactList = () => {
             <div className="filter">
                 <div className='filter-text'>Sort Products</div>
                 <select className='filter-select-size' onChange={(e) => setSort(e.target.value)}>
-                    <option disabled selected className='filter-option'>Sort</option>
                     {selectSortItems.map(item => 
                          <option value={item.value} className='filter-option' key={item.id}>{item.title}</option>
                     )}

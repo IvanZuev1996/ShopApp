@@ -20,19 +20,28 @@
     border-radius: 10px;
     justify-content: center;
     position: relative;
+    height: 400px;
 }
+
+.product-price {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-weight: normal;
+}
+
 .product-image{
-    width: 300px;
-    height: 100%;
+    width: 260px;
     z-index: 2;
+    object-fit: cover;
 }
 
 .product-title{
+    width: 70%;
+    font-size: 20px;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    width: 70%;
     margin: auto 0;
     margin-top: 20px;
     user-select: none;

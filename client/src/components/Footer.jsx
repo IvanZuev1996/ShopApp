@@ -57,7 +57,7 @@ const Footer = () => {
                     contact@get.your.sneakers.dev
                 </div>
             </div>
-            <img src="https://dialholidays.com/images/getway.png" className='payment-image'/>
+            <img src="https://mysiteforsoreeyes.com/wp-content/uploads/2017/05/payment-icons.png" className='payment-image'/>
         </div>
     </div>
   )

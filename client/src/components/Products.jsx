@@ -8,19 +8,22 @@ import axios from 'axios'
 const Products = ({page, category, filters, sort}) => {
 
   const [products, setProducts] = useState([]);
+  const [loader, setLoader] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
+        setLoader(true);
         const res = await axios.get( 
           category 
             ? `http://localhost:5000/api/products?category=${category}` 
             : 'http://localhost:5000/api/products'
         );
         setProducts(res.data);
+        setLoader(false);
       } catch (err) {
-
+        setLoader(false);
       }
     }
     getProducts();
@@ -35,6 +38,22 @@ const Products = ({page, category, filters, sort}) => {
     );
   }, [category, filters, products])
 
+  useEffect(() => {
+    if (sort === 'newest') {
+        setFilteredProducts((prev) =>
+            [...prev].sort((a,b) => a.createdAt - b.createdAt)
+        )
+    } else if (sort === 'asc') {
+        setFilteredProducts((prev) =>
+          [...prev].sort((a,b) => a.price - b.price)
+        )
+    } else if (sort === 'desc') {
+        setFilteredProducts((prev) =>
+          [...prev].sort((a,b) => b.price - a.price)
+        )
+    }
+  }, [sort])
+
   return (
     <div className='prosuct-list-container'>
         {page === 'HomePage'
@@ -42,13 +61,15 @@ const Products = ({page, category, filters, sort}) => {
           : <div></div>
         }
         <div className='products-container'>
-          {(page === 'HomePage')
-            ? <MySlider/>
-            :
-              filteredProducts.map(item => 
-                <ProductItem item={item} key={item.id}/>
-              )
-          } 
+          { loader
+            ? <h1>Proccessing...</h1>
+            : (page === 'HomePage')
+                ? loader && <MySlider products={products.slice(0,8)}/>
+                : category 
+                    && filteredProducts.map(item => 
+                      <ProductItem key={item._id} item={item}/>
+                    )
+              } 
         </div>
     </div>
   )
