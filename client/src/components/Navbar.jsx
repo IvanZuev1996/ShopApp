@@ -5,8 +5,15 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 
+const NavbarLink = {
+    display: 'block',
+    textDecoration: 'none',
+    color: 'black'
+}
+
 const Navbar = () => {
     const quantity = useSelector(state => state.cart.quantity);
+
     return (
         <div className='navbar-container'>
             <div className='navbar-wrapper'>
@@ -24,9 +31,13 @@ const Navbar = () => {
                     <h1 className='navbar-logo-mobile'>GET.</h1>
                 </div>
                 <div className="right-navbar-content">
-                    <div className="navbar-menu-item">REGISTER</div>
-                    <div className="navbar-menu-item">SIGN IN</div>
-                    <Link to='/cart'>
+                    <Link to='/register' style={NavbarLink}>
+                        <div className="navbar-menu-item">REGISTER</div>
+                    </Link>
+                    <Link to='/login' style={NavbarLink}>
+                        <div className="navbar-menu-item">SIGN IN</div>
+                    </Link>
+                    <Link to='/cart' style={NavbarLink}>
                         <Badge badgeContent={quantity} color="primary" className='cart-icon-wrapper'>
                             <ShoppingCartOutlined className='navbar-cart-icon'/>
                         </Badge>

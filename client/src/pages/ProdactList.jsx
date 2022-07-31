@@ -8,11 +8,17 @@ import Footer from '../components/Footer'
 import { selectCompanyItems } from '../data.js'
 import { selectSizeItems } from '../data.js'
 import { selectSortItems } from '../data.js'
-import { useLocation } from 'react-router-dom'
+import { West } from '@mui/icons-material'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+
+const BackButton = {
+    cursor: 'pointer',
+}
 
 const ProdactList = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const category = location.pathname.split('/')[2];
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState('newest');
@@ -29,7 +35,10 @@ const ProdactList = () => {
     <div className='prodact-list-container'>
         <Navbar/>
         <Announcement/>
-        <h1 className="prodact-list-title">{category}</h1>
+        <div className='product-list-header'>
+            <West style={BackButton} onClick={() => navigate(-1)}></West>
+            <h1 className="prodact-list-title">{category}</h1>
+        </div>
         <div className="filter-container">
             <div className="filter">
                 <div className='filter-text'>Filter Products</div>

@@ -49,6 +49,7 @@
 }
 
 .navbar-menu-item {
+    text-decoration: none;
     font-style: 14px;
     cursor: pointer;
     margin-right: 25px;

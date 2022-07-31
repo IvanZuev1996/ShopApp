@@ -55,6 +55,14 @@
     margin-top: 7px;
 }
 
+.errorAuth{
+    color: red;
+    font-size: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
 .login-links{
     margin-top: 10px;
     display: flex;

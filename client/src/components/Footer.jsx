@@ -3,6 +3,7 @@ import '../styles/Footer.css'
 import styled from 'styled-components';
 import { Facebook, Instagram, Pinterest, Twitter, LocationOn,LocalPhone, Mail } from '@mui/icons-material';
 import { links } from '../data.js'
+import { Link } from 'react-router-dom';
 
 const SocialIcon = styled.div`
     width: 40px;
@@ -15,6 +16,12 @@ const SocialIcon = styled.div`
     margin: 0px 3px;
     background-color: #${props => props.color};
 `
+
+const FooterLink = {
+    display: 'block',
+    textDecoration: 'none',
+    color: 'black'
+}
 
 const Footer = () => {
   return (
@@ -36,8 +43,12 @@ const Footer = () => {
         <div className="footer-center">
             <div className="footer-center-title">Useful Links</div>
             <div className="footer-list">
-                {links.map(item => 
-                    <div className="footer-link" key={item.id}>{item.link}</div>
+                {links.map(item =>
+                    <div className="footer-link" key={item.id}>
+                        <Link to={item.path} style={FooterLink}>
+                            <div>{item.link}</div>
+                        </Link>
+                    </div>
                 )}
             </div>
         </div>

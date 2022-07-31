@@ -7,11 +7,14 @@ import Register from './pages/Register';
 import Success from './pages/Success';
 import './styles/App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import ScrollToTop from './components/UI/ScrollToTop';
 
 function App() {
-  const user = true;
+  const user = useSelector(state => state.user.currentUser);
   return (
     <BrowserRouter>
+      <ScrollToTop/>
       <Routes>
         <Route path='/' exact element={<Home/>}/>
         <Route path='/cart' element={<Cart/>}/>

@@ -4,6 +4,7 @@ import MySlider from './UI/MySlider'
 import { productsList } from '../data'
 import ProductItem from './ProductItem'
 import axios from 'axios'
+import Loader from './UI/Loader/Loader'
 
 const Products = ({page, category, filters, sort}) => {
 
@@ -62,9 +63,9 @@ const Products = ({page, category, filters, sort}) => {
         }
         <div className='products-container'>
           { loader
-            ? <h1>Proccessing...</h1>
+            ? <Loader/>
             : (page === 'HomePage')
-                ? loader && <MySlider products={products.slice(0,8)}/>
+                ? !loader && <MySlider products={products.slice(0,8)}/>
                 : category 
                     && filteredProducts.map(item => 
                       <ProductItem key={item._id} item={item}/>

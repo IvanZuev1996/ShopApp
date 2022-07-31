@@ -85,30 +85,37 @@ export const links = [
     {
         id: 1,
         link: "Home",
+        path: '/'
     },
     {
         id: 2,
         link: "Cart",
+        path: '/cart'
     },
     {
         id: 3,
         link: "For Men",
+        path: '/products/man'
     },
     {
         id: 4,
         link: "For Women",
+        path: '/products/women'
     },
     {
         id: 5,
         link: "For Children",
+        path: '/products/children'
     },
     {
         id: 6,
         link: "My Account",
+        path: '/'
     },
     {
         id: 7,
         link: "Terms",
+        path: '/'
     }
 ]
 

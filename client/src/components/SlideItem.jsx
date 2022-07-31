@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const SlideItem = ({sliderItem}) => {
   return (
@@ -11,12 +12,14 @@ const SlideItem = ({sliderItem}) => {
                 {sliderItem.title}
             </h1>
             <p className="slider-price">
-                {sliderItem.price}
+                {sliderItem.price} ₽
             </p>
             <p className="slider-discription">
                 {sliderItem.desc}
             </p>
-            <a href="#" className="slider-button">SHOP NOW</a>
+            <Link to={`/product/${sliderItem._id}`}>
+                <a className="slider-button">SHOP NOW</a>
+            </Link>
         </div>
     </div>
   )

@@ -3,14 +3,16 @@ import Announcement from '../components/Announcement'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import '../styles/Cart.css'
-import { Add, Remove } from '@mui/icons-material'
+import { Add, Remove, Close, West } from '@mui/icons-material'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import StripeCheckout from 'react-stripe-checkout'
 import { useState } from 'react'
 import {userRequest} from '../requestMethods'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { addProduct, removeProduct, updateProduct } from '../redux/cartRedux'
+import {store} from '../redux/store'
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -29,19 +31,40 @@ const SummaruItem = styled.div`
     font-size: ${props => props.type === 'total' && '24px'}
 `
 
+const BackButton = {
+    cursor: 'pointer',
+    marginLeft: '10px'
+}
+
+
 const Cart = () => {
     const cart = useSelector(state => state.cart);
     const [stripeToken, setStripeToken] = useState(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onToken = (token) => {
         setStripeToken(token);
     }
 
+    const changeQuantity = (product, type) => {
+        if (type === 'add') {
+            dispatch(updateProduct({...product, quantity: product.quantity + 1}))
+        } else if (type === 'remove') {
+            if (product.quantity > 1){
+                dispatch(updateProduct({...product, quantity: product.quantity - 1}));
+            }
+        }
+    }
+
+    const handleClick = (product) => {
+        dispatch(removeProduct(product));
+    }
+
     useEffect(() => {
         const makeRequest = async () => {
             try{
-                const res = await axios.post('http://localhost:5000/api/checkout/payment', {
+                const res = await userRequest.post('/checkout/payment', {
                     tokenId: stripeToken.id,
                     amount: cart.total * 100
                 })
@@ -60,9 +83,10 @@ const Cart = () => {
             <div className="cart-wrapper">
                 <h1 className="main-cart-title">YOUR BAG</h1>
                 <div className="top-cart">
-                    <a href="#" className="cart-btn-back">GO BACK</a>
+                    <West style={BackButton} onClick={() => navigate(-1)}>GO BACK</West>
+                    {/* <a href="#" className="cart-btn-back">GO BACK</a> */}
                     <div className="cart-desc">
-                        <p className="cart-desc-title">Shopping Bag(0)</p>
+                        <p className="cart-desc-title">{`Shopping Bag(${cart.quantity})`}</p>
                         <p className="cart-desc-title">Your WishList(0)</p>
                     </div>
                     <a href="#" className="cart-btn-checkout">CHECKOUT NOW</a>
@@ -79,26 +103,30 @@ const Cart = () => {
                                     <div className="cart-product-info-title">
                                         <div className="cart-product-id"><b>ID</b>: {product._id.slice(0,7)}</div>
                                         <div className="cart-product-title"><b>Product</b>: {product.title}</div>
-                                        <div className="cart-product-desc">{product.desc}</div>
+                                        <div className="cart-product-desc product-desc">{product.desc}</div>
                                         <div className="cart-product-color">
-                                            <div className="cart-product-color-title"><b>Color</b>: </div>
-                                            <ProductColor color={product.color}></ProductColor>
+                                            <div className="cart-product-color-title"><b>Size</b>: </div>
+                                            <p className='product-size'>{product.size}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="cart-product-price-details">
-                                    <div className="cart-product-amount-container">
-                                        <Remove/>
-                                        <div className="cart-product-amount">{product.quantity}</div>
-                                        <Add/>
+                                <div className="product-remove-details">
+                                    <div className="cart-product-price-details">
+                                        <div className="cart-product-amount-container">
+                                            <Remove onClick={() => changeQuantity(product, 'remove')} className='change-quantity'/>
+                                            <div className="cart-product-amount">{product.quantity}</div>
+                                            <Add onClick={() => changeQuantity(product, 'add')}  className='change-quantity'/>
+                                        </div>
+                                        <div className="cart-product-price-wrapper">
+                                            {product.price * product.quantity}₽
+                                        </div>
                                     </div>
-                                    <div className="cart-product-price-wrapper">
-                                        {product.price * product.quantity}₽
+                                    <div className="remove-product-wrapper">
+                                        <Close className='remove-product' onClick={() => handleClick(product)}></Close>
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        <hr></hr>
                     </div>
                     <div className="cart-summary">
                         <h1 className="cart-product-summary-title">ORDER SUMMARY</h1>

@@ -15,6 +15,12 @@
     font-weight: 600;
 }
 
+.product-list-header{
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
 .prodact-list-title{
     margin: 20px 50px;
 }
@@ -48,5 +54,8 @@
     }
     .filter-select-size{
         margin-left: 24px;
+    }
+    .product-list-header{
+        margin-left: 15px;
     }
 }
