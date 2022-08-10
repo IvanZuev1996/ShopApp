@@ -12,7 +12,7 @@ const cartSlice = createSlice({
         addProduct: (state, action) => {
             let isHaveProduct = false;
             state.products = state.products.map(p => {
-                if (p._id === action.payload._id) {
+                if (p._id === action.payload._id && p.size === action.payload.size) {
                     isHaveProduct = true;
                     return {...p, quantity: p.quantity + action.payload.quantity}
                 } else {

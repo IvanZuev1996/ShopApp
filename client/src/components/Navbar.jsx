@@ -1,5 +1,6 @@
 import { Search, ShoppingCartOutlined } from '@mui/icons-material';
 import { Badge } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';

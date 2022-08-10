@@ -43,7 +43,7 @@ const Slider = () => {
             </div>
             <Wrapper slideIndex={slideIndex}>
                 {sliderItems.map(sliderItem => 
-                    <SlideItem sliderItem={sliderItem} key={sliderItem.id}/>
+                    <SlideItem sliderItem={sliderItem} key={sliderItem._id}/>
                 )}
             </Wrapper>
             <div className="slider-right-arrow" onClick={() => hadleClick("right")}>

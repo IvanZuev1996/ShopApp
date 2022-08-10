@@ -18,7 +18,7 @@ const SlideItem = ({sliderItem}) => {
                 {sliderItem.desc}
             </p>
             <Link to={`/product/${sliderItem._id}`}>
-                <a className="slider-button">SHOP NOW</a>
+                <div className="slider-button">SHOP NOW</div>
             </Link>
         </div>
     </div>

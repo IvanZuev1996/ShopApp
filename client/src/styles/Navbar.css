@@ -48,6 +48,11 @@
     padding: 0px 5px;
 }
 
+.navbar-favorite-icon{
+    cursor: pointer;
+    margin-right: 20px;
+}
+
 .navbar-menu-item {
     text-decoration: none;
     font-style: 14px;
@@ -89,6 +94,9 @@
         align-items: center;
         font-weight: 500;
         font-size: 24px;
+    }
+    .navbar-favorite-icon{
+        margin-right: 5px;
     }
     .center-navbar-content{
         height: 50px;
