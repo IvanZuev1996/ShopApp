@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:5000/api/';
-const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZDMwMmFlMGMxNzY3YTQxMDNhZTFmYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1ODQyNzI1MywiZXhwIjoxNjU4Njg2NDUzfQ.0ND0aeyYD9H9guKjJzPLNiI6-gWwbj_BMQ30xqC2_1k';
+const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZDMwMmFlMGMxNzY3YTQxMDNhZTFmYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2MDA2MTMwMCwiZXhwIjoxNjYwMzIwNTAwfQ.cIJ442wYMADUgch0v-fEq0tRMkuYT36clx9QlxmVZoU';
 
 export const publicRequest = axios.create({
     baseURL: BASE_URL
@@ -9,5 +9,5 @@ export const publicRequest = axios.create({
 
 export const userRequest = axios.create({
     baseURL: BASE_URL,
-    header: {token: TOKEN}
+    headers: {token: TOKEN}
 })

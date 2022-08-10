@@ -2,9 +2,10 @@ import { Search, ShoppingCartOutlined } from '@mui/icons-material';
 import { Badge } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
+import { logout } from '../redux/userRedux';
 
 const NavbarLink = {
     display: 'block',
@@ -14,6 +15,12 @@ const NavbarLink = {
 
 const Navbar = () => {
     const quantity = useSelector(state => state.cart.quantity);
+    const user = useSelector(state => state.user.currentUser);
+    const dispatch = useDispatch();
+
+    const handleClick = () => {
+        dispatch(logout());
+    }
 
     return (
         <div className='navbar-container'>
@@ -32,12 +39,22 @@ const Navbar = () => {
                     <h1 className='navbar-logo-mobile'>GET.</h1>
                 </div>
                 <div className="right-navbar-content">
-                    <Link to='/register' style={NavbarLink}>
-                        <div className="navbar-menu-item">REGISTER</div>
-                    </Link>
-                    <Link to='/login' style={NavbarLink}>
-                        <div className="navbar-menu-item">SIGN IN</div>
-                    </Link>
+                    {!user
+                        ? 
+                        <>
+                            <Link to='/register' style={NavbarLink}>
+                                <div className="navbar-menu-item">REGISTER</div>
+                            </Link>
+                            <Link to='/login' style={NavbarLink}>
+                                <div className="navbar-menu-item">SIGN IN</div>
+                            </Link>
+                        </>
+                        :
+                        <Link to='/' style={NavbarLink}>
+                            <div className="navbar-menu-item" onClick={handleClick}>LOG OUT</div>
+                        </Link>
+                    }
+                    
                     <Link to='/cart' style={NavbarLink}>
                         <Badge badgeContent={quantity} color="primary" className='cart-icon-wrapper'>
                             <ShoppingCartOutlined className='navbar-cart-icon'/>

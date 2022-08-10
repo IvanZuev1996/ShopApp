@@ -12,7 +12,6 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log('few');
     login(dispatch, {username, password})
   }
 

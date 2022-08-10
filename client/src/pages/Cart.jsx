@@ -36,7 +36,6 @@ const BackButton = {
     marginLeft: '10px'
 }
 
-
 const Cart = () => {
     const cart = useSelector(state => state.cart);
     const [stripeToken, setStripeToken] = useState(null);
