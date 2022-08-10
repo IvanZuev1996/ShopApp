@@ -12,6 +12,7 @@ import ScrollToTop from './components/UI/ScrollToTop';
 
 function App() {
   const user = useSelector(state => state.user.currentUser);
+
   return (
     <BrowserRouter>
       <ScrollToTop/>

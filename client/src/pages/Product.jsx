@@ -10,9 +10,9 @@ import styled from 'styled-components'
 import { Add, Remove, West } from '@mui/icons-material'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { publicRequest } from '../requestMethods'
-import { addProduct } from '../redux/cartRedux'
-import { useDispatch } from 'react-redux'
+import { publicRequest, userRequest } from '../requestMethods'
+import { addProduct, createCart, updateUserCart } from '../redux/cartRedux'
+import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/UI/Loader/Loader'
 
 const FilterColor = styled.div`
@@ -45,6 +45,8 @@ const BackButton = {
 }
 
 const Product = () => {
+    const user = useSelector(state => state.user.currentUser);
+    const cart = useSelector(state => state.cart);
     const location = useLocation();
     const id = location.pathname.split('/')[2];
     const navigate = useNavigate();
@@ -64,7 +66,7 @@ const Product = () => {
         }
     }
 
-    const handleClick = () => {
+    const handleClick = async () => {
         dispatch(addProduct({ ...product, quantity, color, size }));
     }
 
