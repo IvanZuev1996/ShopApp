@@ -1,11 +1,11 @@
 import { Search, ShoppingCartOutlined } from '@mui/icons-material';
 import { Badge } from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { logout } from '../redux/userRedux';
+import { cleanCart } from '../redux/cartRedux';
 
 const NavbarLink = {
   display: 'block',
@@ -20,6 +20,7 @@ const Navbar = () => {
 
   const handleClick = () => {
     dispatch(logout());
+    dispatch(cleanCart());
   };
 
   return (
