@@ -14,19 +14,13 @@ const linkStyle = {
 };
 
 const ProductItem = ({ item }) => {
-  const dispatch = useDispatch();
-
-  const updateCart = () => {
-    dispatch(addProduct({ ...item, quantity: 1 }));
-  };
-
   return (
     <div className="product-item-container">
       <img src={item.img} className="product-image" />
       <div className="product-info">
         <h2 className="product-title">{item.title}</h2>
         <div className="products-icons">
-          <div className="cart-icon" onClick={updateCart}>
+          <div className="cart-icon">
             <ShoppingCartOutlined />
           </div>
           <div className="cart-icon">

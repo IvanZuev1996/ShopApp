@@ -3,7 +3,7 @@ import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import NewsLetter from '../components/NewsLetter';
-import '../styles/Product.css';
+import '../styles/Product.scss';
 import styled from 'styled-components';
 import { Add, Remove, West } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -89,7 +89,7 @@ const Product = () => {
 
   useEffect(() => {
     const updateCart = async () => {
-      const res = await userRequest.put(`/carts/${user._id}`, cart);
+      user && (await userRequest.put(`/carts/${user._id}`, cart));
     };
     updateCart();
   }, [cart]);
