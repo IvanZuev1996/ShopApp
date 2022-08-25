@@ -24,7 +24,9 @@ const Login = () => {
   const handleClick = (e) => {
     e.preventDefault();
     const getCart = async (user) => {
-      const res = await userRequest.get(`/carts/find/${user._id}`);
+      const res = await userRequest(user.accessToken).get(
+        `/carts/find/${user._id}`
+      );
       const userCart = res.data;
       userCart.products.map(async (el) => {
         const response = await getProduct(

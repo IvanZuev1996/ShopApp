@@ -68,6 +68,7 @@ const Product = () => {
         ...product,
         quantity,
         size,
+        isHave: true,
       })
     );
   };
@@ -89,7 +90,8 @@ const Product = () => {
 
   useEffect(() => {
     const updateCart = async () => {
-      user && (await userRequest.put(`/carts/${user._id}`, cart));
+      user &&
+        (await userRequest(user.accessToken).put(`/carts/${user._id}`, cart));
     };
     updateCart();
   }, [cart]);

@@ -65,7 +65,7 @@ const Register = () => {
   const handleClick = (e) => {
     e.preventDefault();
     const createCart = async (user) => {
-      const res = await userRequest.post('/carts', {
+      const res = await userRequest(user.accessToken).post('/carts', {
         _id: user._id,
         userId: user._id,
         products: [],

@@ -10,9 +10,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import { useState } from 'react';
 import { userRequest } from '../requestMethods';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { addProduct, removeProduct, updateProduct } from '../redux/cartRedux';
-import { store } from '../redux/store';
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -63,7 +61,8 @@ const Cart = () => {
 
   useEffect(() => {
     const updateCart = async () => {
-      user && (await userRequest.put(`/carts/${user._id}`, cart));
+      user &&
+        (await userRequest(user.accessToken).put(`/carts/${user._id}`, cart));
     };
     updateCart();
   }, [cart]);
@@ -71,10 +70,13 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post('/checkout/payment', {
-          tokenId: stripeToken.id,
-          amount: cart.total * 100,
-        });
+        const res = await userRequest(user.accessToken).post(
+          '/checkout/payment',
+          {
+            tokenId: stripeToken.id,
+            amount: cart.total * 100,
+          }
+        );
         navigate('/success', { state: res.data });
       } catch (err) {}
     };
@@ -191,7 +193,12 @@ const Cart = () => {
               token={onToken}
               stripeKey={KEY}
             >
-              <button className="cart-summary-btn-checkout">Pay Now</button>
+              <button
+                disabled={cart.products.length === 0}
+                className="cart-summary-btn-checkout"
+              >
+                Pay Now
+              </button>
             </StripeCheckout>
           </div>
         </div>

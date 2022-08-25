@@ -47,6 +47,12 @@
   cursor: pointer;
 }
 
+.cart-summary-btn-checkout:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: default;
+}
+
 .cart-desc {
   display: flex;
   justify-content: center;

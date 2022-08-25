@@ -35,6 +35,14 @@
   background-color: rgb(227, 227, 227, 0.5);
 }
 
+.secondNavbarWrapperFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  background-color: rgb(227, 227, 227);
+}
+
 .secondNavbarLink {
   cursor: pointer;
 }
