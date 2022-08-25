@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import { useState } from 'react';
 import { userRequest } from '../requestMethods';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { addProduct, removeProduct, updateProduct } from '../redux/cartRedux';
 import { store } from '../redux/store';
@@ -63,8 +63,7 @@ const Cart = () => {
 
   useEffect(() => {
     const updateCart = async () => {
-      console.log(cart);
-      const res = await userRequest.put(`/carts/${user._id}`, cart);
+      user && (await userRequest.put(`/carts/${user._id}`, cart));
     };
     updateCart();
   }, [cart]);
@@ -108,7 +107,14 @@ const Cart = () => {
                   <img src={product.img} className="cart-product-img" />
                   <div className="cart-product-info-title">
                     <div className="cart-product-id">
-                      <b>ID</b>: {product._id.slice(0, 7)}
+                      <Link
+                        to={`/product/${product._id}`}
+                        style={{
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <b>ID</b>: {product._id.slice(0, 7)}
+                      </Link>
                     </div>
                     <div className="cart-product-title">
                       <b>Product</b>: {product.title}

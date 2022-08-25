@@ -137,6 +137,9 @@
 .increment,
 .dicrement {
   cursor: pointer;
+  padding: 4px;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
 }
 
 //NOT

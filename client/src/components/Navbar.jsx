@@ -35,7 +35,6 @@ const Navbar = () => {
         </div>
         <div className="center-navbar-content">
           <Link to="/" style={NavbarLink}>
-            {/* <h1 className="navbar-logo">GET. YOUR. SNEAKERS</h1> */}
             <h4 className="wordCarousel">
               <div>
                 <ul className="flip2">
