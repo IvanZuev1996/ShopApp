@@ -1,56 +1,11 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../redux/apiCalls';
-import { publicRequest, userRequest } from '../requestMethods';
+import { userRequest } from '../requestMethods';
+import { useInput } from '../hooks/useInput.js';
+import { logout } from '../redux/userRedux';
 import '../styles/Register.scss';
-
-const useValidation = (value, validations) => {
-  const [isEmpty, setIsEmpty] = useState(true);
-  const [emailError, setEmailError] = useState(false);
-  const [inputValid, setInputValid] = useState(false);
-
-  useEffect(() => {
-    for (const validation in validations) {
-      switch (validation) {
-        case 'isEmpty':
-          value ? setIsEmpty(false) : setIsEmpty(true);
-          break;
-        case 'isEmail':
-          const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-          regex.test(value) ? setEmailError(false) : setEmailError(true);
-          break;
-      }
-    }
-  }, [value]);
-
-  useEffect(() => {
-    if (isEmpty || emailError) {
-      setInputValid(false);
-    } else {
-      setInputValid(true);
-    }
-  }, [isEmpty, emailError]);
-
-  return { isEmpty, emailError, inputValid };
-};
-
-const useInput = (initionalVlue, validations) => {
-  const [value, setValue] = useState(initionalVlue);
-  const [isDirty, setIsDirty] = useState(false);
-  const valid = useValidation(value, validations);
-
-  const onChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  const onBlur = (e) => {
-    setIsDirty(true);
-  };
-
-  return { value, onChange, onBlur, isDirty, ...valid };
-};
+import Loader from '../components/UI/Loader/Loader';
 
 const Register = () => {
   const name = useInput('', { isEmpty: true });
@@ -59,20 +14,32 @@ const Register = () => {
   const email = useInput('', { isEmpty: true, isEmail: true });
   const password = useInput('', { isEmpty: true });
   const confirmPassword = useInput('', { isEmpty: true });
-  const { isFetching, userError } = useSelector((state) => state.user);
+  const { isFetching, error } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const handleClick = (e) => {
     e.preventDefault();
     const createCart = async (user) => {
-      const res = await userRequest(user.accessToken).post('/carts', {
+      await userRequest(user.accessToken).post('/carts', {
         _id: user._id,
         userId: user._id,
         products: [],
       });
     };
-    register(dispatch, { userName, password, email }, createCart);
+    register(
+      dispatch,
+      {
+        username: userName.value,
+        password: password.value,
+        email: email.value,
+      },
+      createCart
+    );
   };
+
+  useEffect(() => {
+    dispatch(logout());
+  }, []);
 
   return (
     <div className="register-container">
@@ -120,6 +87,11 @@ const Register = () => {
             {userName.isDirty && userName.isEmpty && (
               <div className="not-valid-massange">
                 Поле не может быть пустым
+              </div>
+            )}
+            {error && (
+              <div className="errorRegister">
+                A user with this name already exists
               </div>
             )}
             <input
@@ -197,7 +169,7 @@ const Register = () => {
                 !confirmPassword.inputValid
               }
             >
-              GET STARTED!
+              {isFetching ? <Loader /> : 'GET STARTED'}
             </button>
           </div>
           <div className="regiser-aggreement">

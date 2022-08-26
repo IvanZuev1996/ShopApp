@@ -90,6 +90,16 @@
   margin: 100px 0px;
 }
 
+.errorRegister {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #ff0000;
+}
+
+.action-button {
+  position: relative;
+}
+
 .action-button:disabled {
   opacity: 0.5;
   cursor: default;

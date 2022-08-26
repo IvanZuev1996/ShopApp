@@ -101,7 +101,9 @@ const Product = () => {
       <Navbar />
       <Announcement />
       {isLoading ? (
-        <Loader />
+        <div className="product-loader">
+          <Loader />
+        </div>
       ) : (
         <div>
           <West

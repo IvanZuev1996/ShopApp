@@ -25,8 +25,10 @@ export const register = async (dispatch, user, createCart) => {
   dispatch(registerStart());
   try {
     const res = await publicRequest.post('/auth/register', user);
-    dispatch(registerSuccess(res.data));
-    createCart(res.data);
+    await dispatch(registerSuccess(res.data));
+    const response = await publicRequest.post('/auth/login', user);
+    await dispatch(loginSuccess(response.data));
+    createCart(response.data);
   } catch (err) {
     dispatch(registerFailure());
   }
