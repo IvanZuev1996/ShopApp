@@ -9,27 +9,29 @@ import './styles/App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ScrollToTop from './components/UI/ScrollToTop';
+import UserAccount from './pages/UserAccount';
 
 function App() {
-  const user = useSelector(state => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <BrowserRouter>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
-        <Route path='/' exact element={<Home/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route 
-          path='/login' 
-          element = {user ? <Navigate replace to = '/'/> : <Login/>}
+        <Route path="/" exact element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate replace to="/" /> : <Login />}
         />
-        <Route 
-          path='/register' 
-          element = {user ? <Navigate replace to = '/'/> : <Register/>}
+        <Route
+          path="/register"
+          element={user ? <Navigate replace to="/" /> : <Register />}
         />
-        <Route path='/products/:category' element={<ProdactList/>}/>
-        <Route path='/product/:id' element={<Product/>}/>
-        <Route path='/success' element={<Success/>}/>
+        <Route path="/products/:category" element={<ProdactList />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/personal" element={<UserAccount />} />
       </Routes>
     </BrowserRouter>
   );
