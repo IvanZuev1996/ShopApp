@@ -29,6 +29,8 @@ const Register = () => {
     register(
       dispatch,
       {
+        name: name.value,
+        lastname: lastName.value,
         username: userName.value,
         password: password.value,
         email: email.value,

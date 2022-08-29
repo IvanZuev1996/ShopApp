@@ -10,9 +10,24 @@ const SecNavbar = () => {
   return (
     <div className={classes.secondNavbarWrapper}>
       <div className={classes.secondNavbarLeftContent}>
-        <p className={classes.secondNavbarLink}>For men</p>
-        <p className={classes.secondNavbarLink}>For women</p>
-        <p className={classes.secondNavbarLink}>For children</p>
+        <Link
+          to="/products/man"
+          style={{ color: 'black', textDecoration: 'none' }}
+        >
+          <p className={classes.secondNavbarLink}>For man</p>
+        </Link>
+        <Link
+          to="/products/woman"
+          style={{ color: 'black', textDecoration: 'none' }}
+        >
+          <p className={classes.secondNavbarLink}>For women</p>
+        </Link>
+        <Link
+          to="/products/children"
+          style={{ color: 'black', textDecoration: 'none' }}
+        >
+          <p className={classes.secondNavbarLink}>For children</p>
+        </Link>
       </div>
       <div className={classes.secondNavbarRightContent}>
         <Link to={user ? `/personal` : '/login'} style={{ color: 'black' }}>
