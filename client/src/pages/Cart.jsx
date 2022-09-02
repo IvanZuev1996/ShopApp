@@ -3,7 +3,7 @@ import Announcement from '../components/Announcement';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/Cart.css';
-import { Add, Remove, Close, West } from '@mui/icons-material';
+import { West } from '@mui/icons-material';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
@@ -11,6 +11,9 @@ import { useState } from 'react';
 import { userRequest } from '../requestMethods';
 import { Link, useNavigate } from 'react-router-dom';
 import { addProduct, removeProduct, updateProduct } from '../redux/cartRedux';
+import { CSSTransition } from 'react-transition-group';
+import { TransitionGroup } from 'react-transition-group';
+import CartItem from '../components/CartItem';
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -37,6 +40,7 @@ const BackButton = {
 const Cart = () => {
   const user = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
+  const [removedProduct, setRemovedProduct] = useState('');
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -57,6 +61,7 @@ const Cart = () => {
 
   const handleClick = (product) => {
     dispatch(removeProduct(product));
+    setRemovedProduct(product.productId);
   };
 
   useEffect(() => {
@@ -103,63 +108,21 @@ const Cart = () => {
         </div>
         <div className="bottom-cart">
           <div className="cart-info">
-            {cart.products.map((product) => (
-              <div className="cart-product-wrapper" key={product.productId}>
-                <div className="cart-product-info-details">
-                  <img src={product.img} className="cart-product-img" />
-                  <div className="cart-product-info-title">
-                    <div className="cart-product-id">
-                      <Link
-                        to={`/product/${product._id}`}
-                        style={{
-                          textDecoration: 'none',
-                        }}
-                      >
-                        <b>ID</b>: {product._id.slice(0, 7)}
-                      </Link>
-                    </div>
-                    <div className="cart-product-title">
-                      <b>Product</b>: {product.title}
-                    </div>
-                    <div className="cart-product-desc product-desc">
-                      {product.desc}
-                    </div>
-                    <div className="cart-product-color">
-                      <div className="cart-product-color-title">
-                        <b>Size</b>:{' '}
-                      </div>
-                      <p className="product-size">{product.size}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-remove-details">
-                  <div className="cart-product-price-details">
-                    <div className="cart-product-amount-container">
-                      <Remove
-                        onClick={() => changeQuantity(product, 'remove')}
-                        className="change-quantity"
-                      />
-                      <div className="cart-product-amount">
-                        {product.quantity}
-                      </div>
-                      <Add
-                        onClick={() => changeQuantity(product, 'add')}
-                        className="change-quantity"
-                      />
-                    </div>
-                    <div className="cart-product-price-wrapper">
-                      {product.price * product.quantity}₽
-                    </div>
-                  </div>
-                  <div className="remove-product-wrapper">
-                    <Close
-                      className="remove-product"
-                      onClick={() => handleClick(product)}
-                    ></Close>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <TransitionGroup>
+              {cart.products.map((product) => (
+                <CSSTransition
+                  key={product.productId}
+                  timeout={300}
+                  classNames="alert"
+                >
+                  <CartItem
+                    product={product}
+                    changeQuantity={changeQuantity}
+                    handleClick={handleClick}
+                  />
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
           </div>
           <div className="cart-summary">
             <h1 className="cart-product-summary-title">ORDER SUMMARY</h1>

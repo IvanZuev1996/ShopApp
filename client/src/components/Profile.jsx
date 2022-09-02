@@ -104,6 +104,9 @@ const Profile = ({ setModal }) => {
             Save
           </button>
         </div>
+        <div className="change-password-wrapper">
+          <p className="change-password-link">Change password</p>
+        </div>
       </div>
     </div>
   );

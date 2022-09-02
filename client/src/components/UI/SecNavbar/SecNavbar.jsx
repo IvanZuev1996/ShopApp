@@ -4,6 +4,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Badge } from '@mui/material';
 
 const SecNavbar = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -36,7 +37,9 @@ const SecNavbar = () => {
             <AccountCircleOutlinedIcon />
           </div>
         </Link>
-        <FavoriteBorderIcon style={{ cursor: 'pointer' }} />
+        <Badge badgeContent={1} color="secondary">
+          <FavoriteBorderIcon style={{ cursor: 'pointer' }} />
+        </Badge>
       </div>
     </div>
   );
