@@ -1,6 +1,5 @@
 import React from 'react';
-import { popularProducts } from '../../data';
-import ProductItem from '../ProductItem';
+import ProductItem from '../../ProductItem';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -9,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
 const MySlider = ({ products }) => {
   const { width } = useWindowDimensions();

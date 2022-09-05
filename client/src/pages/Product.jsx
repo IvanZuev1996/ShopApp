@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Announcement from '../components/Announcement';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-import NewsLetter from '../components/NewsLetter';
-import '../styles/Product.css';
+import Announcement from '../components/UI/Announcement/Announcement';
+import Footer from '../components/Static/Footer';
+import Navbar from '../components/Static/Navbar';
+import NewsLetter from '../components/Static/NewsLetter';
+import '../styles/Product.scss';
 import styled from 'styled-components';
 import { Add, Remove, West } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -68,6 +68,7 @@ const Product = () => {
         ...product,
         quantity,
         size,
+        isHave: true,
       })
     );
   };
@@ -89,7 +90,8 @@ const Product = () => {
 
   useEffect(() => {
     const updateCart = async () => {
-      const res = await userRequest.put(`/carts/${user._id}`, cart);
+      user &&
+        (await userRequest(user.accessToken).put(`/carts/${user._id}`, cart));
     };
     updateCart();
   }, [cart]);
@@ -99,7 +101,9 @@ const Product = () => {
       <Navbar />
       <Announcement />
       {isLoading ? (
-        <Loader />
+        <div className="product-loader">
+          <Loader />
+        </div>
       ) : (
         <div>
           <West

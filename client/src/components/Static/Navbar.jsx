@@ -3,9 +3,9 @@ import { Badge } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../styles/Navbar.css';
-import { logout } from '../redux/userRedux';
-import { cleanCart } from '../redux/cartRedux';
+import '../../styles/Navbar.scss';
+import { logout } from '../../redux/userRedux';
+import { cleanCart } from '../../redux/cartRedux';
 
 const NavbarLink = {
   display: 'block',
@@ -35,7 +35,14 @@ const Navbar = () => {
         </div>
         <div className="center-navbar-content">
           <Link to="/" style={NavbarLink}>
-            <h1 className="navbar-logo">GET. YOUR. SNEAKERS</h1>
+            <h4 className="wordCarousel">
+              <div>
+                <ul className="flip2">
+                  <li>GET. YOUR. SNEAKERS</li>
+                  <li>STREET BEET CLONE</li>
+                </ul>
+              </div>
+            </h4>
           </Link>
           <Link to="/" style={NavbarLink}>
             <h1 className="navbar-logo-mobile">GET.</h1>
@@ -45,17 +52,21 @@ const Navbar = () => {
           {!user ? (
             <>
               <Link to="/register" style={NavbarLink}>
-                <div className="navbar-menu-item">REGISTER</div>
+                <button className="auth-button">
+                  <span>REGISTER</span>
+                </button>
               </Link>
               <Link to="/login" style={NavbarLink}>
-                <div className="navbar-menu-item">SIGN IN</div>
+                <button className="auth-button sing-in-btn">
+                  <span>SIGN IN</span>
+                </button>
               </Link>
             </>
           ) : (
             <Link to="/" style={NavbarLink}>
-              <div className="navbar-menu-item" onClick={handleClick}>
-                LOG OUT
-              </div>
+              <button className="auth-button sing-in-btn" onClick={handleClick}>
+                <span>LOG OUT</span>
+              </button>
             </Link>
           )}
 

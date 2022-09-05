@@ -4,12 +4,14 @@ import { addProduct } from '../redux/cartRedux';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/apiCalls';
 import { publicRequest, userRequest } from '../requestMethods';
-import '../styles/Login.css';
+import { CSSTransition } from 'react-transition-group';
+import '../styles/Login.scss';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { isFetching, error } = useSelector((state) => state.user);
+  const [userError, setUserError] = useState(error);
   const dispatch = useDispatch();
 
   const getProduct = async (id) => {
@@ -22,7 +24,9 @@ const Login = () => {
   const handleClick = (e) => {
     e.preventDefault();
     const getCart = async (user) => {
-      const res = await userRequest.get(`/carts/find/${user._id}`);
+      const res = await userRequest(user.accessToken).get(
+        `/carts/find/${user._id}`
+      );
       const userCart = res.data;
       userCart.products.map(async (el) => {
         const response = await getProduct(
@@ -33,39 +37,66 @@ const Login = () => {
         );
       });
     };
-    login(dispatch, { username, password }, getCart);
+    login(dispatch, { username, password }, getCart, setUserError);
   };
 
   return (
     <div className="login-container">
-      <div className="login-wrapper">
-        <h1 className="main-login-title">SIGN IN</h1>
-        <form action="#" className="login-form">
-          <input
-            type="text"
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+      <div className="card">
+        <div className="card-image">
+          <h2 className="card-heading">
+            LOG IN
+            <small>Welcome back...</small>
+          </h2>
+        </div>
+        <form className="card-form">
+          <div className="input">
+            <input
+              type="text"
+              className="input-field"
+              required
+              onChange={(e) => {
+                setUsername(e.target.value);
+                setUserError(false);
+              }}
+            />
+            <label className="input-label">NickName</label>
+          </div>
+          <div className="input">
+            <input
+              type="password"
+              className="input-field"
+              required
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setUserError(false);
+              }}
+            />
+            <label className="input-label">Password</label>
+          </div>
+          <div className="action">
+            <button
+              className="action-button"
+              onClick={handleClick}
+              disabled={isFetching}
+            >
+              GO SHOPPING!
+            </button>
+          </div>
+          <CSSTransition
+            in={userError}
+            timeout={300}
+            classNames="alert"
+            unmountOnExit
+          >
+            <p className="errorAuth">Invalid username or password...</p>
+          </CSSTransition>
         </form>
-        <button
-          type="button"
-          className="login-btn"
-          onClick={handleClick}
-          disabled={isFetching}
-        >
-          LOGIN
-        </button>
-        {error && <p className="errorAuth">Invalid username or password...</p>}
-        <div className="login-links">
-          <a href="" className="forgot-password">
-            DO NOT YOU REMEMBER THE PASSWARD?
-          </a>
-          <a className="login-create-account-link">CREATE A NEW ACCOUNT</a>
+        <div className="card-info">
+          <div className="login-links">
+            <a className="forgot-password">DO NOT YOU REMEMBER THE PASSWARD?</a>
+            <a className="login-create-account-link">CREATE A NEW ACCOUNT</a>
+          </div>
         </div>
       </div>
     </div>
