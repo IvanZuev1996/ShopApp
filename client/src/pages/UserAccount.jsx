@@ -1,13 +1,13 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Profile from '../components/Profile';
+import Navbar from '../components/Static/Navbar';
+import Profile from '../components/ProfileTabs/Profile';
 import SecNavbar from '../components/UI/SecNavbar/SecNavbar';
 import { useState } from 'react';
 import '../styles/UserAccount.css';
 import MyModal from '../components/UI/MyModal/MyModal';
-import Orders from '../components/Orders';
-import LoveList from '../components/LoveList';
-import Address from '../components/Address';
+import Orders from '../components/ProfileTabs/Orders';
+import LoveList from '../components/ProfileTabs/LoveList';
+import Address from '../components/ProfileTabs/Address';
 import ChangePasswordModal from '../components/UI/MyModal/ChangePasswordModal';
 
 const UserAccount = () => {

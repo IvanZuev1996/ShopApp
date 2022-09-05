@@ -45,5 +45,10 @@ export const useInput = (initionalVlue, validations) => {
     setIsDirty(true);
   };
 
-  return { value, onChange, onBlur, isDirty, ...valid };
+  const restartInput = () => {
+    setValue('');
+    setIsDirty(false);
+  };
+
+  return { value, onChange, onBlur, isDirty, restartInput, ...valid };
 };

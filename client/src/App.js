@@ -8,7 +8,7 @@ import Success from './pages/Success';
 import './styles/App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ScrollToTop from './components/UI/ScrollToTop';
+import ScrollToTop from './components/UI/ScrollToTop/ScrollToTop';
 import UserAccount from './pages/UserAccount';
 
 function App() {

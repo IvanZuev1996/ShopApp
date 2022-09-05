@@ -1,8 +1,8 @@
 import React from 'react';
-import { useInput } from '../hooks/useInput';
+import { useInput } from '../../hooks/useInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCurrentUser } from '../redux/userRedux';
-import { userRequest } from '../requestMethods';
+import { updateCurrentUser } from '../../redux/userRedux';
+import { userRequest } from '../../requestMethods';
 
 const Profile = ({ setModal, setPasswordModal }) => {
   const user = useSelector((state) => state.user.currentUser);

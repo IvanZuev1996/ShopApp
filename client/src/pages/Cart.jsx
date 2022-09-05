@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import Announcement from '../components/Announcement';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Announcement from '../components/UI/Announcement/Announcement';
+import Navbar from '../components/Static/Navbar';
+import Footer from '../components/Static/Footer';
 import '../styles/Cart.css';
 import { West } from '@mui/icons-material';
 import styled from 'styled-components';

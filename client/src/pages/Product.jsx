@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Announcement from '../components/Announcement';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-import NewsLetter from '../components/NewsLetter';
+import Announcement from '../components/UI/Announcement/Announcement';
+import Footer from '../components/Static/Footer';
+import Navbar from '../components/Static/Navbar';
+import NewsLetter from '../components/Static/NewsLetter';
 import '../styles/Product.scss';
 import styled from 'styled-components';
 import { Add, Remove, West } from '@mui/icons-material';

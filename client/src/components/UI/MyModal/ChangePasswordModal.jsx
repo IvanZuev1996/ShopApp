@@ -1,85 +1,93 @@
 import React from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useInput } from '../../../hooks/useInput';
+import { userRequest } from '../../../requestMethods';
+import EmptyInput from '../inputErrors/EmptyInput';
+import NotMatchValue from '../inputErrors/NotMatchValue';
+import NotValidInput from '../inputErrors/NotValidInput';
+import MyButton from '../MyButton/MyButton';
+import MyInput from '../MyInput/MyInput';
+import MyModal from './MyModal';
 
 const ChangePasswordModal = ({ modal, setModal }) => {
+  const user = useSelector((state) => state.user.currentUser);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmError, setConfirmError] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
   const oldPassword = useInput('', { isEmpty: true });
   const newPassword = useInput('', { isEmpty: true });
   const confirmPassword = useInput('', { isEmpty: true });
 
-  const handleClick = () => {
-    // проверка на валидность старого пароля
+  const closeModal = () => {
+    setModal(false);
+    setPasswordError(false);
+    setConfirmError(false);
+  };
+
+  const handleClick = async () => {
+    if (newPassword.value === confirmPassword.value) {
+      try {
+        await userRequest(user.accessToken).put(`/users/${user._id}`, {
+          oldPassword: oldPassword.value,
+          password: newPassword.value,
+        });
+        setModal(false);
+        setSuccessModal(true);
+      } catch (error) {
+        setPasswordError(true);
+      }
+    } else {
+      setConfirmError(true);
+    }
+    oldPassword.restartInput();
+    newPassword.restartInput();
+    confirmPassword.restartInput();
   };
 
   return (
     <div>
+      {successModal && (
+        <MyModal modal={successModal} setModal={setSuccessModal} />
+      )}
       {modal && (
-        <div className="update-user-modal" onClick={() => setModal(false)}>
+        <div className="update-user-modal" onClick={closeModal}>
           <div
             className="modal-password-massage"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="main-modal-title">Change your password...</div>
             <div className="change-password-inputs">
-              <div className="input">
-                {oldPassword.isDirty && oldPassword.isEmpty && (
-                  <div className="not-valid-massange">
-                    Поле не может быть пустым
-                  </div>
-                )}
-                <input
-                  type="password"
-                  className="input-field"
-                  value={oldPassword.value}
-                  onChange={oldPassword.onChange}
-                  onBlur={oldPassword.onBlur}
-                  required
-                />
-                <label className="input-label">Old password</label>
-              </div>
-              <div className="input">
-                {newPassword.isDirty && newPassword.isEmpty && (
-                  <div className="not-valid-massange">
-                    Поле не может быть пустым
-                  </div>
-                )}
-                <input
-                  type="password"
-                  className="input-field"
-                  value={newPassword.value}
-                  onChange={newPassword.onChange}
-                  onBlur={newPassword.onBlur}
-                  required
-                />
-                <label className="input-label">New password</label>
-              </div>
-              <div className="input">
-                {confirmPassword.isDirty && confirmPassword.isEmpty && (
-                  <div className="not-valid-massange">
-                    Поле не может быть пустым
-                  </div>
-                )}
-                <input
-                  type="password"
-                  className="input-field"
-                  value={confirmPassword.value}
-                  onChange={confirmPassword.onChange}
-                  onBlur={confirmPassword.onBlur}
-                  required
-                />
-                <label className="input-label">Confirm password</label>
-              </div>
+              <MyInput
+                element={oldPassword}
+                title="Old password"
+                setPasswordError={setPasswordError}
+              />
+              <EmptyInput element={oldPassword} />
+              <NotValidInput condition={passwordError} />
+              <MyInput
+                element={newPassword}
+                title="New password"
+                setConfirmError={setConfirmError}
+              />
+              <EmptyInput element={newPassword} />
+              <NotMatchValue condition={confirmError} />
+              <MyInput
+                element={confirmPassword}
+                title="Confirm password"
+                setConfirmError={setConfirmError}
+              />
+              <EmptyInput element={confirmPassword} />
             </div>
-            <button
-              className="btn-add-to-cart change-password-btn"
-              disabled={
+            <MyButton
+              disabledCondition={
                 !oldPassword.inputValid ||
                 !newPassword.inputValid ||
                 !confirmPassword.inputValid
               }
-              onClick={handleClick}
-            >
-              Change password
-            </button>
+              title="Change password"
+              handleClick={handleClick}
+            />
           </div>
         </div>
       )}

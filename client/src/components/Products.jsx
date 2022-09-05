@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Products.css';
-import MySlider from './UI/MySlider';
+import MySlider from './UI/MySlider/MySlider';
 import ProductItem from './ProductItem';
 import axios from 'axios';
 import Loader from './UI/Loader/Loader';
