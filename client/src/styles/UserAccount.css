@@ -113,12 +113,51 @@
   padding: 40px 80px;
 }
 
+.modal-password-massage {
+  text-align: center;
+  min-width: 326px;
+  background: #fff;
+  max-height: calc(100% - 20px);
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+  padding: 40px 80px;
+}
+
+.modal-password-massage input {
+  width: 400px;
+  height: 50px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.main-modal-title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .close-modal-btn {
   position: absolute;
   top: 0;
   right: 0;
   margin: 10px;
   cursor: pointer;
+}
+
+.change-password-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.change-password-btn {
+  margin-top: 25px;
+  width: 100%;
+}
+
+.change-password-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 @media screen and (min-width: 0px) and (max-width: 767px) {
@@ -170,5 +209,14 @@
     align-items: center;
     justify-content: center;
     margin-top: 50px;
+  }
+  .modal-password-massage input {
+    width: 100%;
+  }
+  .modal-password-massage {
+    padding: 10px 5px;
+  }
+  .main-modal-title {
+    margin-bottom: 50px;
   }
 }

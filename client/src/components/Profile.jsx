@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateCurrentUser } from '../redux/userRedux';
 import { userRequest } from '../requestMethods';
 
-const Profile = ({ setModal }) => {
+const Profile = ({ setModal, setPasswordModal }) => {
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const name = useInput(`${user.name ? user.name : ''}`, {});
@@ -105,7 +105,12 @@ const Profile = ({ setModal }) => {
           </button>
         </div>
         <div className="change-password-wrapper">
-          <p className="change-password-link">Change password</p>
+          <p
+            className="change-password-link"
+            onClick={() => setPasswordModal(true)}
+          >
+            Change password
+          </p>
         </div>
       </div>
     </div>
