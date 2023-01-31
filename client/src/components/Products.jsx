@@ -16,8 +16,8 @@ const Products = ({ page, category, filters, sort }) => {
         setLoader(true);
         const res = await axios.get(
           category
-            ? `http://localhost:5000/api/products?category=${category}`
-            : 'http://localhost:5000/api/products'
+            ? `https://shop-app-server.vercel.app/products?category=${category}`
+            : 'https://shop-app-server.vercel.app/products'
         );
         setProducts(res.data);
         setLoader(false);

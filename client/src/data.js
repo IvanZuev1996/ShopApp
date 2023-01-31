@@ -110,12 +110,17 @@ export const links = [
   {
     id: 6,
     link: 'My Account',
-    path: '/',
+    path: '/personal',
   },
   {
     id: 7,
     link: 'Terms',
-    path: '/',
+    path: '/personal/lovelist',
+  },
+  {
+    id: 8,
+    link: 'My orders',
+    path: '/personal/orders',
   },
 ];
 

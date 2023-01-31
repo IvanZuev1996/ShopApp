@@ -29,7 +29,7 @@ const Slider = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/products');
+        const res = await axios.get('https://shop-app-server.vercel.app/products');
         setSliderItems(res.data.slice(0, 5));
       } catch (err) {
         setIsFetching(false);

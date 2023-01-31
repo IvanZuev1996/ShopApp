@@ -10,10 +10,10 @@ import LoveList from '../components/ProfileTabs/LoveList';
 import Address from '../components/ProfileTabs/Address';
 import ChangePasswordModal from '../components/UI/MyModal/ChangePasswordModal';
 
-const UserAccount = () => {
+const UserAccount = ({ activeRoute = 'Profile' }) => {
   const [modal, setModal] = useState(false);
   const [passwordModal, setPasswordModal] = useState(false);
-  const [activeBtn, setActiveBtn] = useState('Profile');
+  const [activeBtn, setActiveBtn] = useState(activeRoute);
 
   const updateActiveBtn = (e) => {
     setActiveBtn(e.target.innerHTML);

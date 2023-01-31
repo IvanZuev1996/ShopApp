@@ -32,6 +32,14 @@ function App() {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/success" element={<Success />} />
         <Route path="/personal" element={<UserAccount />} />
+        <Route
+          path="/personal/lovelist"
+          element={<UserAccount activeRoute="Love" />}
+        />
+        <Route
+          path="/personal/orders"
+          element={<UserAccount activeRoute="Orders" />}
+        />
       </Routes>
     </BrowserRouter>
   );
