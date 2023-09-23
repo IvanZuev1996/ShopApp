@@ -1,0 +1,15 @@
+{
+
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint", // Prettier, как форматтер по умолчанию
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true // работает аналогично eslint --fix
+    },
+    "editor.formatOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json"
+    ]
+}
